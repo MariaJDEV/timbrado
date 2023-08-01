@@ -1,11 +1,12 @@
 server:
   port: 8093
 spring:
-  cloud:     config:
+  cloud: 
+    config:
       server:
         git:
           default-label: master
-          uri: https://github.com/MariaJDEV/microservicios-timbrado
+          uri: https://github.com/MariaJDEV/timbrado
           search-paths: config-data
   application:
     name: config-service
