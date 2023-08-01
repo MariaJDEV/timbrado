@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE log4j2>
+<Configuration status="DEBUG">
+	<Appenders>
+		<Console name="LogToConsole" target="SYSTEM_OUT">		
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</Console>													
+		<RollingFile name="LogToRollingFile" fileName="//PERLIEXP/Facturas_Electronicas/Logs_CartaPorte_Informes_Mysuite/logErrorTimbradoCFDIMysuite.log"			
+			filePattern="//PERLIEXP/Facturas_Electronicas/Logs_CartaPorte_Informes_Mysuite/Logs/$${date:yyyy-MM-dd}/mail-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<pattern>%d{dd MMM yyyy - HH:mm:ss} [%-5p] - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="3 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<!-- Especifica la clase para ver los errores mas especificos -->
+		<Logger name="com.perliexpress.Timbrado" level="trace" additivity="false">
+			<AppenderRef ref="LogToRollingFile" />
+		</Logger>
+		<Logger name="com.perliexpress.Timbrado" level="trace" additivity="false">
+			<AppenderRef ref="LogToRollingFile" />
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="LogToConsole" />
+			<AppenderRef ref="LogToRollingFile" />
+		</Root>
+	</Loggers>
+
+</Configuration>
